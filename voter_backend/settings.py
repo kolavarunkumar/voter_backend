@@ -33,7 +33,7 @@ MIDDLEWARE = [
 ]
 
 # URLs
-ROOT_URLCONF = 'your_project.urls'  # <-- Replace 'your_project' with your project name
+ROOT_URLCONF = 'voter_backend.urls'  # <-- Replace 'your_project' with your project name
 
 # Templates
 TEMPLATES = [
@@ -50,7 +50,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'your_project.wsgi.application'  # <-- Replace 'your_project' with your project name
+WSGI_APPLICATION = 'voter_backend.wsgi.application'  # <-- Replace 'your_project' with your project name
 
 # Database (Railway MySQL)
 DATABASES = {
