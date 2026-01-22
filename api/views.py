@@ -30,20 +30,3 @@ def search_voter(request):
     except Exception as e:
         logger.error("SEARCH API FAILED", exc_info=True)
         return Response({"error": str(e)}, status=500)
-
-@api_view(['GET'])
-def search_voter(request):
-    q = request.GET.get('q', '').strip()
-
-    if len(q) < 2:
-        return Response([])
-
-    voters = Voter.objects.filter(
-        Q(epic_no__icontains=q) |
-        Q(name__icontains=q) |
-        Q(relation_name__icontains=q) |
-        Q(door_no__icontains=q)
-    )[:50]
-
-    serializer = VoterSerializer(voters, many=True)
-    return Response(serializer.data)
