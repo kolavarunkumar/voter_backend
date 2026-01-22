@@ -56,11 +56,11 @@ WSGI_APPLICATION = 'your_project.wsgi.application'  # <-- Replace 'your_project'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'railway'),
-        'USER': os.environ.get('MYSQL_USER', 'root'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'NlwpdHCXdQnQzlIByljLQpjcBUyuEfzh'),
-        'HOST': os.environ.get('MYSQL_HOST', 'interchange.proxy.rlwy.net'),
-        'PORT': os.environ.get('MYSQL_PORT', '39079'),
+        'NAME': os.environ.get('MYSQLDATABASE', 'railway'),
+        'USER': os.environ.get('MYSQLUSER', 'root'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD', 'KLdZRMSnhYDsnlHTnZqhNlCdDqrGtNpQ'),
+        'HOST': os.environ.get('MYSQLHOST', 'mysql.railway.internal'),
+        'PORT': os.environ.get('MYSQLPORT', '26216'),
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
