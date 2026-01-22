@@ -28,9 +28,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Add your apps here
+    'rest_framework',
     'api',
 ]
 
+# Django REST Framework – force JSON only (FIXES 500 ERROR)
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+}
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
