@@ -22,4 +22,4 @@ RUN python manage.py collectstatic --noinput || echo "Skipping collectstatic"
 
 EXPOSE 8000
 
-CMD bash -c "python manage.py migrate && gunicorn your_project.wsgi:application --bind 0.0.0.0:8000"
+CMD bash -c "python manage.py migrate && gunicorn voter_backend.wsgi:application --bind 0.0.0.0:8000"
