@@ -1,11 +1,11 @@
 # Base image
 FROM python:3.10-slim
 
-# Set environment variables
+# Environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
+# Set working directory
 WORKDIR /app
 
 # Install system dependencies
@@ -24,8 +24,8 @@ RUN pip install -r requirements.txt
 # Copy project
 COPY . /app/
 
-# Collect static files
-RUN python manage.py collectstatic --noinput || echo "Static collection skipped"
+# Collect static files (if possible)
+RUN python manage.py collectstatic --noinput || echo "Skipping static collection"
 
 # Expose port
 EXPOSE 8000
