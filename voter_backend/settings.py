@@ -32,8 +32,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'your_project.urls'  # replace with your project name
+# URLs
+ROOT_URLCONF = 'your_project.urls'  # <-- Replace 'your_project' with your project name
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -48,17 +50,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'your_project.wsgi.application'  # replace with your project name
+WSGI_APPLICATION = 'your_project.wsgi.application'  # <-- Replace 'your_project' with your project name
 
 # Database (Railway MySQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'default_db'),
+        'NAME': os.environ.get('MYSQL_DATABASE', 'railway'),
         'USER': os.environ.get('MYSQL_USER', 'root'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
-        'HOST': os.environ.get('MYSQL_HOST', '127.0.0.1'),
-        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'NlwpdHCXdQnQzlIByljLQpjcBUyuEfzh'),
+        'HOST': os.environ.get('MYSQL_HOST', 'interchange.proxy.rlwy.net'),
+        'PORT': os.environ.get('MYSQL_PORT', '39079'),
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
