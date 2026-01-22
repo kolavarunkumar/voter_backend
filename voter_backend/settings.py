@@ -7,7 +7,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'unsafe-secret-key')
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ['true', '1']
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+#ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = [
+    "voterbackend-production.up.railway.app",
+    ".railway.app",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://voterbackend-production.up.railway.app",
+]
 
 # Installed apps
 INSTALLED_APPS = [
