@@ -33,3 +33,22 @@ def search_voter(request):
     except Exception as e:
         logger.exception(f"Search failed for query '{q}'")
         return Response({'error': 'Internal Server Error'}, status=500)
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Voter
+
+@api_view(['GET'])
+def test_db(request):
+    try:
+        total = Voter.objects.count()
+        sample = Voter.objects.first()
+        return Response({
+            'total_voters': total,
+            'sample_voter': {
+                'epic_no': sample.epic_no,
+                'name': sample.name
+            } if sample else None
+        })
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
