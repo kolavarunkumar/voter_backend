@@ -5,10 +5,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install system dependencies (FIXED)
+# Only basic build tools
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libmariadb-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
