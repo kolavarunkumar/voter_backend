@@ -27,10 +27,11 @@ def search_voter(request):
         serializer = VoterSerializer(voters, many=True)
         return Response(serializer.data)
 
-    @api_view(['GET'])
-def test_db(request):
-    return Response({"count": Voter.objects.count()})
-
     except Exception as e:
         logger.error("SEARCH API FAILED", exc_info=True)
         return Response({"error": str(e)}, status=500)
+
+@api_view(['GET'])
+def test_db(request):
+    return Response({"count": Voter.objects.count()})
+
