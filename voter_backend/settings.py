@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from pathlib import Path
 
 # Base directory
@@ -8,16 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'unsafe-secret-key')
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ['true', '1']
 #ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
-ALLOWED_HOSTS = [
-    "voterbackend-production.up.railway.app",
-    ".railway.app",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://voterbackend-production.up.railway.app",
-]
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 # Installed apps
 INSTALLED_APPS = [
@@ -72,15 +66,7 @@ WSGI_APPLICATION = 'voter_backend.wsgi.application'  # <-- Replace 'your_project
 
 # Database (Railway MySQL)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQLDATABASE', 'railway'),
-        'USER': os.environ.get('MYSQLUSER', 'root'),
-        'PASSWORD': os.environ.get('MYSQLPASSWORD', 'KLdZRMSnhYDsnlHTnZqhNlCdDqrGtNpQ'),
-        'HOST': os.environ.get('MYSQLHOST', 'mysql.railway.internal'),
-        'PORT': os.environ.get('MYSQLPORT', '26216'),
-        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 # Password validation
